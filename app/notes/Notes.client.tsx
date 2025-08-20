@@ -2,7 +2,7 @@
 import css from "./NotesPage.module.css";
 import { useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes, NotesListResponse } from "@/lib/api";
+import { fetchNotes } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 import Pagination from "@/components/Pagination/Pagination";
 import Modal from "@/components/Modal/Modal";
@@ -13,10 +13,9 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 type NotesProps = {
   page: number;
   query: string;
-  notesData: NotesListResponse;
 };
 
-function Notes({ page, query, notesData }: NotesProps) {
+function Notes({ page, query }: NotesProps) {
   const [currentPage, setCurrentPage] = useState(page);
   const [searchQuery, setSearchQuery] = useState(query);
 

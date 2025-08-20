@@ -20,17 +20,24 @@ export const fetchNotes = async (
   query: string = "",
   page: number
 ): Promise<NotesListResponse> => {
-  const res = await axios.get<NotesListResponse>("/notes", {
-    headers: {
-      Authorization: token,
-    },
-    params: {
-      search: query,
-      page,
-      perPage: 10,
-    },
-  });
-  return res.data;
+  try {
+    const res = await axios.get<NotesListResponse>("/notes", {
+      headers: {
+        Authorization: token,
+      },
+      params: {
+        search: query,
+        page,
+        perPage: 10,
+      },
+    });
+    return res.data;
+  } catch {
+    return {
+      notes: [],
+      totalPages: 0,
+    };
+  }
 };
 
 export const fetchNoteByID = async (id: string): Promise<Note> => {

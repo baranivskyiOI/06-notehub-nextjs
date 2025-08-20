@@ -3,7 +3,6 @@
 import type React from "react";
 import css from "./Modal.module.css";
 import { useEffect } from "react";
-import ReactDOM from "react-dom";
 
 interface ModalProps {
   onClose: () => void;
