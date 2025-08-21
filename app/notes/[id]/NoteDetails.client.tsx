@@ -1,3 +1,5 @@
+"use client";
+
 import { fetchNoteByID } from "@/lib/api";
 import { Note } from "@/types/note";
 import css from "./NoteDetails.module.css";
@@ -6,8 +8,8 @@ type NoteDetailsProp = {
   id: string;
 };
 
-const NoteDetails = async ({ id }: NoteDetailsProp) => {
-  const note: Note = await fetchNoteByID(id);
+const NoteDetails = ({ id }: NoteDetailsProp) => {
+  const note: Note = async () => await fetchNoteByID(id);
 
   return (
     <div className={css.container}>

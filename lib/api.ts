@@ -41,7 +41,7 @@ export const fetchNotes = async (
 };
 
 export const fetchNoteByID = async (id: string): Promise<Note> => {
-  const res = await axios.get(`/notes/${id}`, {
+  const res = await axios.get<Note>(`/notes/${id}`, {
     headers: {
       Authorization: token,
     },
@@ -58,7 +58,7 @@ export const createNote = async (note: CreateNote): Promise<Note> => {
   return res.data;
 };
 
-export const deleteNote = async (id: string) => {
+export const deleteNote = async (id: string): Promise<Note> => {
   const res = await axios.delete<Note>(`/notes/${id}`, {
     headers: {
       Authorization: token,

@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import NoteDetails from "./NoteDetails.client";
 
 type Props = {
@@ -5,9 +6,18 @@ type Props = {
 };
 
 const NotePage = async ({ params }: Props) => {
-  console.log(await params);
+  
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey; ["notes"]
+  })
+
+
   const { id: noteId } = await params;
-  return <NoteDetails id={noteId} />;
+  return (
+
+  )
 };
 
 export default NotePage;
