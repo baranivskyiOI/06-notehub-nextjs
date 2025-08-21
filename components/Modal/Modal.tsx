@@ -3,6 +3,7 @@
 import type React from "react";
 import css from "./Modal.module.css";
 import { useEffect } from "react";
+import PortalModal from "./Modal.client";
 
 interface ModalProps {
   onClose: () => void;
@@ -26,7 +27,7 @@ export default function Modal({ onClose, children }: ModalProps) {
   }, [onClose]);
 
   return (
-    <>
+    <PortalModal>
       <div
         onClick={onClose}
         className={css.backdrop}
@@ -37,6 +38,6 @@ export default function Modal({ onClose, children }: ModalProps) {
           {children}
         </div>
       </div>
-    </>
+    </PortalModal>
   );
 }
